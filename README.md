@@ -1,27 +1,76 @@
-# EpttNew
+# EPTT — Executive Premium Transport & Travels
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3.
+Single-page marketing site for EPTT, a luxury chauffeur company in Colombo, Sri Lanka. Built with Angular 17 standalone components, hand-rolled SCSS (no UI library), and `@angular/animations`.
 
-## Development server
+## Running it
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```bash
+npm install
+npm start        # ng serve — http://localhost:4200
+```
 
-## Code scaffolding
+Production build:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+npm run build     # outputs to dist/eptt-new
+```
 
-## Build
+## Project structure
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+src/
+  styles/
+    _variables.scss        # brand color tokens, spacing, breakpoints, motion easing
+    _mixins.scss            # gold-pill header, grey rail, gold-frame, buttons, focus ring
+  app/
+    core/
+      animations/animations.ts        # fadeSlideUp, staggerChildren, pillReveal, circlePop,
+                                       # goldSweep, cardLift, imageDrift, counterFade
+      directives/appear-on-scroll.directive.ts   # IntersectionObserver → (appear) once
+      utils/reduced-motion.ts         # prefers-reduced-motion helpers
+    shared/
+      section-header/                 # the reusable gold pill + black circle header
+    layout/
+      header/                         # sticky nav, transparent → solid on scroll
+    sections/
+      hero/
+      stats/  (+ stat-item/)          # count-up numerals, staggered offset layout
+      story/
+      capabilities/                   # "Back End of the Business" cards
+      transfers-tours/                # airport transfer promise + tour tabs
+      why-choose-us/
+      fleet/  (+ fleet-card/)         # hover tilt / lift / gold underline sweep
+      clientele/                      # greyscale → color logo wall
+      contact/                        # reactive form + footer, aria-live success state
+    app.component.*                   # composes every section in order
+    app.config.ts                     # provideRouter + provideAnimations
+```
 
-## Running unit tests
+## Swapping in real brochure assets
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+All imagery under `src/assets/images/` is a generated placeholder (SVG, brand-toned, labeled) so the layout can be reviewed before real photography and client logos are ready. Regenerate them at any time with:
 
-## Running end-to-end tests
+```bash
+node scripts/gen-placeholders.js
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+To go live, replace each file **in place** with a real asset of the same name (JPG/PNG/WebP is fine — just update the `src` extension in the relevant template if it changes):
 
-## Further help
+| File | Used in | Real asset needed |
+|---|---|---|
+| `hero-chauffeur.svg` | Hero | Chauffeur beside a Mercedes, portrait orientation |
+| `story-mercedes-1.svg`, `story-mercedes-2.svg` | Our Story | Two fleet vehicle photos |
+| `fleet-*.svg` (6 files) | Fleet | One photo per vehicle: S-Class Coupé, C-Class, E-Class, V-Class, Corolla Axio, HiAce |
+| `transfers-airport.svg`, `tour-*.svg` (4 files) | Airport Transfers & Tours | Airport transfer + one image per tour category |
+| `client-*.svg` (10 files) | Our Clientele | Client logos, ideally transparent PNG/SVG |
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Also update:
+- `src/favicon.ico` — replace with the real EPTT mark (gold disc on black), see the `TODO` comment in `src/index.html`.
+- `og:image` in `src/index.html` once a real hero image exists.
+
+Once real assets are in place, `scripts/gen-placeholders.js` is no longer needed and can be deleted.
+
+## Notes on the build
+
+- `angular.json`'s `anyComponentStyle` budget is raised to 6kb warning / 10kb error — the hand-rolled SCSS (mixins expand per-component rather than sharing utility classes) runs a bit larger than the CLI's stock 2kb/4kb defaults, which are tuned for typical component libraries.
+- Animations respect `prefers-reduced-motion`: `AppearOnScrollDirective` skips the observer and reveals content immediately, and `motionParams()` collapses any duration/delay to ~0ms for state-based triggers.

@@ -1,0 +1,20 @@
+<article
+  class="fleet-card stagger-item"
+  [class.fleet-card--hovered]="hovered()"
+  (mouseenter)="setHovered(true)"
+  (mouseleave)="setHovered(false)"
+  (focusin)="setHovered(true)"
+  (focusout)="setHovered(false)"
+  [@cardLift]="hovered() ? 'lifted' : 'rest'"
+>
+  <div class="fleet-card__image-wrap">
+    <img [src]="image" [alt]="name" width="800" height="600" loading="lazy" />
+  </div>
+  <h3 class="fleet-card__name">{{ name }}</h3>
+  <p class="fleet-card__tagline" *ngIf="tagline">{{ tagline }}</p>
+  <span
+    class="fleet-card__underline"
+    aria-hidden="true"
+    [@goldSweep]="hovered() ? 'visible' : 'hidden'"
+  ></span>
+</article>

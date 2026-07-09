@@ -1,0 +1,63 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.why-us {
+  background: var(--eptt-white);
+  padding-block: v.$space-xxl;
+}
+
+.why-us__quote {
+  margin: 0 0 v.$space-xxl;
+  font-family: v.$font-heading;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  color: var(--eptt-black);
+  max-width: 24ch;
+  position: relative;
+  padding-left: v.$space-lg;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.2em;
+    bottom: 0.2em;
+    width: 4px;
+    background: var(--eptt-gold);
+  }
+}
+
+.why-us__grid {
+  display: grid;
+  gap: v.$space-lg;
+
+  @include m.respond(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.why-us__card {
+  background: var(--eptt-grey-lt);
+  border-radius: 1rem;
+  padding: v.$space-lg;
+
+  h3 {
+    font-size: 1.1rem;
+    margin-bottom: v.$space-sm;
+    color: var(--eptt-black);
+
+    &::after {
+      content: '';
+      display: block;
+      width: 2.5rem;
+      height: 3px;
+      background: var(--eptt-gold);
+      margin-top: v.$space-xs;
+    }
+  }
+
+  p {
+    color: var(--eptt-text-muted);
+    font-size: 0.95rem;
+  }
+}

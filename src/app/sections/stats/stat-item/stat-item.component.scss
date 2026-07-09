@@ -1,0 +1,32 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+
+  @include m.respond(md) {
+    &--offset {
+      margin-top: v.$space-xl;
+    }
+  }
+}
+
+.stat-item__value {
+  font-family: v.$font-heading;
+  font-weight: 800;
+  font-size: clamp(2.4rem, 5vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--eptt-gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-item__label {
+  font-family: v.$font-body;
+  font-weight: 400;
+  font-size: 0.95rem;
+  max-width: 18ch;
+  color: var(--eptt-text-muted-inverse);
+}

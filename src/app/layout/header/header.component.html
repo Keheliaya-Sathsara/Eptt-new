@@ -1,0 +1,43 @@
+<header class="site-header" [class.site-header--solid]="scrolled()">
+  <div class="site-header__inner container">
+    <a class="site-header__logo" href="#hero" (click)="closeMenu()">
+      <span class="site-header__logo-mark" aria-hidden="true">E</span>
+      <span class="site-header__logo-text">
+        <strong>EPTT</strong>
+        <small>Transport &amp; Travels</small>
+      </span>
+    </a>
+
+    <nav
+      id="primary-nav"
+      class="site-header__nav"
+      [class.site-header__nav--open]="menuOpen()"
+      aria-label="Primary"
+    >
+      <a
+        *ngFor="let link of navLinks"
+        [href]="'#' + link.fragment"
+        class="site-header__link"
+        (click)="closeMenu()"
+      >
+        {{ link.label }}
+      </a>
+    </nav>
+
+    <div class="site-header__actions">
+      <a class="site-header__cta" href="#contact" (click)="closeMenu()">Book Now</a>
+      <button
+        type="button"
+        class="site-header__toggle"
+        [attr.aria-expanded]="menuOpen()"
+        aria-controls="primary-nav"
+        [attr.aria-label]="menuOpen() ? 'Close menu' : 'Open menu'"
+        (click)="toggleMenu()"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>

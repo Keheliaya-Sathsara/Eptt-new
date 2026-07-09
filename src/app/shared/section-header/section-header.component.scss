@@ -1,0 +1,62 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.section-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: v.$space-xl;
+}
+
+.section-header__circle {
+  @include m.gold-pill-circle;
+  transform-origin: center;
+}
+
+.section-header__pill {
+  @include m.gold-pill;
+  transform-origin: left center;
+}
+
+.section-header__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-header__kicker {
+  display: block;
+  font-family: v.$font-body;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--eptt-black);
+  opacity: 0.65;
+  margin-bottom: 0.3rem;
+}
+
+.section-header__title {
+  font-size: 1.4rem;
+  color: var(--eptt-black);
+  white-space: normal;
+
+  @include m.respond(md) {
+    font-size: 1.9rem;
+  }
+}
+
+// On dark section backgrounds the pill itself is unchanged (gold stays
+// gold) but nothing here currently depends on theme; reserved for sections
+// that need the modifier to diverge further.
+.section-header--dark {
+  .section-header__title {
+    color: var(--eptt-black);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-header__circle,
+  .section-header__pill {
+    transition: none !important;
+  }
+}

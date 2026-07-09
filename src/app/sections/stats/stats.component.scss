@@ -1,0 +1,22 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.stats {
+  background: var(--eptt-black);
+  padding-block: v.$space-xl;
+
+  @include m.respond(md) {
+    padding-block: v.$space-xxl;
+  }
+}
+
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: v.$space-xl v.$space-lg;
+
+  @include m.respond(md) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: v.$space-xxl v.$space-xl;
+  }
+}

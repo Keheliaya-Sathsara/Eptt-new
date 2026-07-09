@@ -1,0 +1,71 @@
+// ============================================================================
+// EPTT Design Tokens — the ONLY place hex colors may be declared.
+// ============================================================================
+
+:root {
+  // Brand palette
+  --eptt-gold: #E8B93B;
+  --eptt-gold-dk: #C99A22;
+  --eptt-black: #0D0D0D;
+  --eptt-charcoal: #1C1C1C;
+  --eptt-grey: #C9C9C9;
+  --eptt-grey-lt: #F2F2F2;
+  --eptt-white: #FFFFFF;
+
+  // Semantic aliases
+  --eptt-surface: var(--eptt-white);
+  --eptt-surface-dark: var(--eptt-black);
+  --eptt-surface-charcoal: var(--eptt-charcoal);
+  --eptt-text: var(--eptt-black);
+  --eptt-text-inverse: var(--eptt-white);
+  --eptt-text-muted: #6B6B6B;
+  --eptt-text-muted-inverse: #B8B8B8;
+  --eptt-border: var(--eptt-grey);
+
+  // Elevation
+  --eptt-shadow-sm: 0 2px 8px rgba(13, 13, 13, 0.08);
+  --eptt-shadow-md: 0 8px 24px rgba(13, 13, 13, 0.14);
+  --eptt-shadow-lg: 0 20px 48px rgba(13, 13, 13, 0.24);
+  --eptt-shadow-gold: 0 10px 30px rgba(232, 185, 59, 0.28);
+
+  // Rail + frame geometry (brochure motifs)
+  --eptt-rail-width: 10px;
+  --eptt-frame-width: 10px;
+  --eptt-pill-height: 4.25rem;
+
+  // Motion
+  --eptt-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --eptt-ease-overshoot: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --eptt-duration-sm: 300ms;
+  --eptt-duration-md: 450ms;
+  --eptt-duration-lg: 600ms;
+}
+
+// Typography
+$font-heading: 'Poppins', 'Montserrat', sans-serif;
+$font-body: 'Inter', 'Source Sans 3', sans-serif;
+
+// Spacing scale
+$space-xxs: 0.25rem;
+$space-xs: 0.5rem;
+$space-sm: 0.75rem;
+$space-md: 1.25rem;
+$space-lg: 2rem;
+$space-xl: 3.5rem;
+$space-xxl: 6rem;
+
+// Breakpoints (mobile-first)
+$bp-sm: 640px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+
+// Layout
+$container-max: 1280px;
+$container-pad: 1.25rem;
+
+// Z-index scale
+$z-rail: 1;
+$z-content: 2;
+$z-header: 100;
+$z-header-solid: 101;

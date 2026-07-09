@@ -1,0 +1,28 @@
+<section id="clientele" class="clientele" aria-labelledby="clientele-heading">
+  <div class="clientele__inner container">
+    <app-section-header kicker="Trusted By" title="Our Clientele"></app-section-header>
+
+    <p
+      id="clientele-heading"
+      class="clientele__intro"
+      appearOnScroll
+      (appear)="introVisible.set(true)"
+      [@fadeSlideUp]="{ value: introVisible() ? 'in' : 'out', params: introParams }"
+    >
+      A true partnership is a two-way street — ideas and information flow openly and
+      regularly, on a foundation of mutual trust and respect. Our clients are the
+      life-source of our business.
+    </p>
+
+    <div
+      class="clientele__grid"
+      appearOnScroll
+      (appear)="gridVisible.set(true)"
+      [@staggerChildren]="gridVisible() ? 'in' : 'out'"
+    >
+      <div class="clientele__logo stagger-item" *ngFor="let client of clients">
+        <img [src]="client.logo" [alt]="client.name" width="320" height="180" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>

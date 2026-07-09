@@ -1,0 +1,28 @@
+<section id="capabilities" class="capabilities" aria-labelledby="capabilities-heading">
+  <div class="capabilities__inner container">
+    <app-section-header
+      kicker="How We Operate"
+      title="Back End of the Business"
+    ></app-section-header>
+
+    <p id="capabilities-heading" class="capabilities__quote">
+      Being a solution to a problem — our service transcends that of a rental car
+      company or an app service.
+    </p>
+
+    <div
+      class="capabilities__grid"
+      appearOnScroll
+      (appear)="visible.set(true)"
+      [@staggerChildren]="visible() ? 'in' : 'out'"
+    >
+      <article class="capability-card stagger-item" *ngFor="let cap of capabilities">
+        <span class="capability-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path [attr.d]="iconPaths[cap.icon]"></path></svg>
+        </span>
+        <h3 class="capability-card__title">{{ cap.title }}</h3>
+        <p class="capability-card__body">{{ cap.body }}</p>
+      </article>
+    </div>
+  </div>
+</section>

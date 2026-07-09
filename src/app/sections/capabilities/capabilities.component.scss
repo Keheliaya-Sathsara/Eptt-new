@@ -1,0 +1,75 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.capabilities {
+  background: var(--eptt-charcoal);
+  padding-block: v.$space-xxl;
+}
+
+.capabilities__quote {
+  color: var(--eptt-white);
+  font-family: v.$font-heading;
+  font-weight: 600;
+  font-size: 1.3rem;
+  max-width: 42ch;
+  margin-bottom: v.$space-xl;
+  border-left: 3px solid var(--eptt-gold);
+  padding-left: v.$space-md;
+}
+
+.capabilities__grid {
+  display: grid;
+  gap: v.$space-lg;
+  grid-template-columns: 1fr;
+
+  @include m.respond(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.respond(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.capability-card {
+  background: var(--eptt-black);
+  border: 1px solid rgba(232, 185, 59, 0.18);
+  border-radius: 1rem;
+  padding: v.$space-lg;
+  transition: transform var(--eptt-duration-sm) var(--eptt-ease-out),
+    border-color var(--eptt-duration-sm) var(--eptt-ease-out);
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-6px);
+    border-color: var(--eptt-gold);
+  }
+}
+
+.capability-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(232, 185, 59, 0.12);
+  color: var(--eptt-gold);
+  margin-bottom: v.$space-md;
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.capability-card__title {
+  color: var(--eptt-white);
+  font-size: 1.05rem;
+  margin-bottom: v.$space-sm;
+}
+
+.capability-card__body {
+  color: var(--eptt-text-muted-inverse);
+  font-size: 0.92rem;
+}

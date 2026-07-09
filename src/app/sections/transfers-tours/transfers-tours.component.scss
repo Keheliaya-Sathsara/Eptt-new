@@ -1,0 +1,107 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.transfers {
+  background: var(--eptt-grey-lt);
+  padding-block: v.$space-xxl;
+}
+
+.transfers__promise {
+  display: grid;
+  gap: v.$space-lg;
+  margin-bottom: v.$space-xxl;
+
+  @include m.respond(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.transfers__promise-item {
+  background: var(--eptt-white);
+  border-left: 4px solid var(--eptt-gold);
+  border-radius: 0.25rem;
+  padding: v.$space-lg;
+  box-shadow: var(--eptt-shadow-sm);
+
+  h3 {
+    font-size: 1.1rem;
+    margin-bottom: v.$space-xs;
+  }
+
+  p {
+    color: var(--eptt-text-muted);
+  }
+}
+
+.transfers__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$space-sm;
+  margin-bottom: v.$space-lg;
+}
+
+.transfers__tab {
+  background: var(--eptt-white);
+  border: 1px solid var(--eptt-border);
+  border-radius: 999px;
+  padding: 0.6rem 1.25rem;
+  font-family: v.$font-body;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--eptt-text);
+  cursor: pointer;
+  transition: background-color var(--eptt-duration-sm) var(--eptt-ease-out),
+    color var(--eptt-duration-sm) var(--eptt-ease-out),
+    border-color var(--eptt-duration-sm) var(--eptt-ease-out);
+  @include m.focus-ring;
+
+  &:hover {
+    border-color: var(--eptt-gold-dk);
+  }
+
+  &--active {
+    background: var(--eptt-gold);
+    border-color: var(--eptt-gold);
+    color: var(--eptt-black);
+  }
+}
+
+.transfers__panel {
+  display: grid;
+  gap: v.$space-lg;
+  align-items: center;
+
+  @include m.respond(md) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.transfers__panel-image {
+  @include m.gold-frame;
+  aspect-ratio: 7 / 5;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.transfers__panel-desc {
+  font-size: 1.05rem;
+  color: var(--eptt-text);
+}
+
+.transfers__tagline {
+  margin-top: v.$space-xl;
+  font-size: 1rem;
+  color: var(--eptt-text-muted);
+
+  strong {
+    display: block;
+    color: var(--eptt-black);
+    font-family: v.$font-heading;
+    font-size: 1.15rem;
+    margin-bottom: v.$space-xxs;
+  }
+}

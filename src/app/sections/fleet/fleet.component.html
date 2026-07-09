@@ -1,0 +1,19 @@
+<section id="fleet" class="fleet" aria-labelledby="fleet-heading">
+  <div class="fleet__inner container">
+    <app-section-header kicker="Our Vehicles" title="The Fleet"></app-section-header>
+
+    <div
+      class="fleet__grid"
+      id="fleet-heading"
+      appearOnScroll
+      (appear)="visible.set(true)"
+      [@staggerChildren]="visible() ? 'in' : 'out'"
+    >
+      <app-fleet-card
+        *ngFor="let vehicle of vehicles"
+        [name]="vehicle.name"
+        [image]="vehicle.image"
+      ></app-fleet-card>
+    </div>
+  </div>
+</section>

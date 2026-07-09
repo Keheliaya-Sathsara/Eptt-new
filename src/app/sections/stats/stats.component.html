@@ -1,0 +1,13 @@
+<section id="stats" class="stats" aria-label="EPTT in numbers">
+  <div class="stats__inner container">
+    <div class="stats__grid">
+      <app-stat-item
+        *ngFor="let stat of stats; let i = index"
+        [target]="stat.value"
+        [suffix]="stat.suffix"
+        [label]="stat.label"
+        [index]="i"
+      ></app-stat-item>
+    </div>
+  </div>
+</section>

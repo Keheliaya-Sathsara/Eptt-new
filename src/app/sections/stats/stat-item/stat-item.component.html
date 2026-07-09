@@ -1,0 +1,12 @@
+<div
+  class="stat-item"
+  [class.stat-item--offset]="index % 2 === 1"
+  appearOnScroll
+  [appearThreshold]="0.4"
+  (appear)="onAppear()"
+  [@counterFade]="{ value: visible() ? 'in' : 'out', params: animationParams }"
+>
+  <span class="stat-item__value" aria-hidden="true">{{ formattedValue }}{{ suffix }}</span>
+  <span class="stat-item__label">{{ label }}</span>
+  <span class="visually-hidden">{{ target }}{{ suffix }} {{ label }}</span>
+</div>

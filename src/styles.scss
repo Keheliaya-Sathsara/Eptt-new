@@ -1,1 +1,85 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'styles/variables' as v;
+@use 'styles/mixins' as m;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  // Matches the sticky header height so anchor jumps don't hide under it.
+  scroll-padding-top: 88px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: v.$font-body;
+  font-weight: 400;
+  color: var(--eptt-text);
+  background: var(--eptt-white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: v.$font-heading;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  line-height: 1.65;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font: inherit;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:focus-visible {
+  @include m.focus-ring;
+}
+
+.visually-hidden {
+  @include m.visually-hidden;
+}
+
+// Reusable small-caps eyebrow line ("TRANSPORT & TRAVELS" style)
+.eyebrow {
+  display: inline-block;
+  font-family: v.$font-body;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--eptt-gold-dk);
+}
+
+.container {
+  @include m.container;
+}

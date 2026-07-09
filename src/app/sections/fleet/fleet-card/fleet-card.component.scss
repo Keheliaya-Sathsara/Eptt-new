@@ -1,0 +1,66 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.fleet-card {
+  position: relative;
+  background: var(--eptt-white);
+  border-radius: 1rem;
+  padding: v.$space-md;
+  overflow: hidden;
+  transition: transform var(--eptt-duration-md) var(--eptt-ease-out);
+  will-change: transform;
+
+  &--hovered {
+    transform: translateY(-8px) rotate(-0.6deg);
+  }
+}
+
+.fleet-card__image-wrap {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: var(--eptt-grey-lt);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--eptt-duration-lg) var(--eptt-ease-out);
+  }
+}
+
+.fleet-card--hovered .fleet-card__image-wrap img {
+  transform: scale(1.06);
+}
+
+.fleet-card__name {
+  margin-top: v.$space-md;
+  font-size: 1.1rem;
+  color: var(--eptt-black);
+}
+
+.fleet-card__tagline {
+  font-size: 0.85rem;
+  color: var(--eptt-text-muted);
+  margin-top: 0.2rem;
+}
+
+.fleet-card__underline {
+  display: block;
+  margin-top: v.$space-sm;
+  height: 3px;
+  width: 100%;
+  background: var(--eptt-gold);
+  transform-origin: left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fleet-card,
+  .fleet-card__image-wrap img {
+    transition: none !important;
+  }
+
+  .fleet-card--hovered {
+    transform: none !important;
+  }
+}

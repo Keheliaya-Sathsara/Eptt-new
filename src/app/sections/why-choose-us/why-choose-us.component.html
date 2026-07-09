@@ -1,0 +1,27 @@
+<section id="why-us" class="why-us" aria-labelledby="why-us-heading">
+  <div class="why-us__inner container">
+    <app-section-header kicker="The Face of the Business" title="Why Choose Us"></app-section-header>
+
+    <blockquote
+      id="why-us-heading"
+      class="why-us__quote"
+      appearOnScroll
+      (appear)="quoteVisible.set(true)"
+      [@fadeSlideUp]="{ value: quoteVisible() ? 'in' : 'out', params: quoteParams }"
+    >
+      “Excellent service. Nice and clean car. Polite driver.”
+    </blockquote>
+
+    <div
+      class="why-us__grid"
+      appearOnScroll
+      (appear)="gridVisible.set(true)"
+      [@staggerChildren]="gridVisible() ? 'in' : 'out'"
+    >
+      <article class="why-us__card stagger-item" *ngFor="let block of blocks">
+        <h3>{{ block.title }}</h3>
+        <p>{{ block.body }}</p>
+      </article>
+    </div>
+  </div>
+</section>

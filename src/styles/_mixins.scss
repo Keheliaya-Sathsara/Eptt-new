@@ -1,0 +1,200 @@
+@use 'sass:map';
+@use 'variables' as v;
+
+// ----------------------------------------------------------------------------
+// Breakpoints — mobile-first, use with (min-width: ...)
+// ----------------------------------------------------------------------------
+$breakpoints: (
+  sm: v.$bp-sm,
+  md: v.$bp-md,
+  lg: v.$bp-lg,
+  xl: v.$bp-xl,
+);
+
+@mixin respond($name) {
+  @if map.has-key($breakpoints, $name) {
+    @media (min-width: map.get($breakpoints, $name)) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint `#{$name}`.";
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Layout helpers
+// ----------------------------------------------------------------------------
+@mixin container {
+  width: 100%;
+  max-width: v.$container-max;
+  margin-inline: auto;
+  padding-inline: v.$container-pad;
+
+  @include respond(lg) {
+    padding-inline: v.$space-xl;
+  }
+}
+
+// The thin grey vertical stripe pinned along the viewport's left edge.
+@mixin grey-rail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--eptt-rail-width);
+  height: 100%;
+  background: var(--eptt-grey);
+  z-index: v.$z-rail;
+
+  @include respond(md) {
+    left: v.$space-lg;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Gold pill section header — lozenge bar running off the left viewport edge,
+// terminating in a solid black circle. This is the signature brand asset.
+// ----------------------------------------------------------------------------
+@mixin gold-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--eptt-pill-height);
+  background: var(--eptt-gold);
+  border-radius: 0 999px 999px 0;
+  padding: v.$space-sm v.$space-lg v.$space-sm calc(v.$space-xl + v.$space-lg);
+  margin-left: calc(-1 * v.$container-pad);
+  margin-right: v.$space-lg;
+
+  // Bleed off the left viewport edge regardless of container padding.
+  @supports (width: 100vw) {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 100%;
+      width: 100vw;
+      height: 100%;
+      background: inherit;
+    }
+  }
+
+  @include respond(md) {
+    margin-left: calc(-1 * v.$space-xl);
+    padding-left: calc(v.$space-xl + v.$space-xl);
+  }
+}
+
+// The solid black circle terminator that caps the gold pill on its left end.
+@mixin gold-pill-circle {
+  position: absolute;
+  left: v.$space-md;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--eptt-black);
+  z-index: 2;
+
+  @include respond(md) {
+    left: v.$space-lg;
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Gold-framed image band with protruding circular node, top-left.
+// ----------------------------------------------------------------------------
+@mixin gold-frame {
+  position: relative;
+  border: var(--eptt-frame-width) solid var(--eptt-gold);
+  border-radius: 1.5rem;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -0.65rem;
+    left: -0.65rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    background: var(--eptt-gold);
+    z-index: 3;
+    box-shadow: var(--eptt-shadow-gold);
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Accessibility
+// ----------------------------------------------------------------------------
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 3px solid var(--eptt-gold);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// ----------------------------------------------------------------------------
+// Buttons
+// ----------------------------------------------------------------------------
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: v.$space-xs;
+  font-family: v.$font-heading;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  padding: 0.9rem 2rem;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform var(--eptt-duration-sm) var(--eptt-ease-out),
+    background-color var(--eptt-duration-sm) var(--eptt-ease-out),
+    color var(--eptt-duration-sm) var(--eptt-ease-out),
+    box-shadow var(--eptt-duration-sm) var(--eptt-ease-out);
+  @include focus-ring;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@mixin button-gold-filled {
+  @include button-base;
+  background: var(--eptt-gold);
+  color: var(--eptt-black);
+
+  &:hover {
+    background: var(--eptt-gold-dk);
+    box-shadow: var(--eptt-shadow-gold);
+  }
+}
+
+@mixin button-gold-outline {
+  @include button-base;
+  background: transparent;
+  border-color: var(--eptt-gold);
+  color: var(--eptt-white);
+
+  &:hover {
+    background: var(--eptt-gold);
+    color: var(--eptt-black);
+  }
+}

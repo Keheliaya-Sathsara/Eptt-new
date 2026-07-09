@@ -1,0 +1,36 @@
+<section id="hero" class="hero" aria-label="Introduction">
+  <div class="hero__rail" aria-hidden="true"></div>
+
+  <div class="hero__inner container">
+    <div class="hero__copy">
+      <p class="eyebrow">Executive Premium Transport &amp; Travels</p>
+
+      <h1 class="hero__headline" [@staggerChildren]="revealed() ? 'in' : 'out'">
+        <span class="stagger-item hero__word" *ngFor="let word of headlineWords">{{ word }}</span>
+      </h1>
+
+      <p class="hero__sub">
+        Executive Premium Transport &amp; Travels — Colombo, Sri Lanka
+      </p>
+
+      <div class="hero__actions">
+        <a class="hero__cta hero__cta--filled" href="#contact">Reserve a Chauffeur</a>
+        <a class="hero__cta hero__cta--outline" href="#fleet">Our Fleet</a>
+      </div>
+    </div>
+
+    <div
+      class="hero__image-wrap"
+      [@imageDrift]="{ value: revealed() ? 'in' : 'out', params: imageParams }"
+      [style.transform]="'translateY(' + parallaxOffset() + 'px)'"
+    >
+      <img
+        src="assets/images/hero-chauffeur.svg"
+        alt="EPTT chauffeur standing beside a black Mercedes-Benz executive car"
+        width="1400"
+        height="1600"
+        class="hero__image"
+      />
+    </div>
+  </div>
+</section>

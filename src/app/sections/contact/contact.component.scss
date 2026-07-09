@@ -1,0 +1,205 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.contact {
+  background: var(--eptt-black);
+  padding-block: v.$space-xxl v.$space-lg;
+  color: var(--eptt-white);
+}
+
+.contact__grid {
+  display: grid;
+  gap: v.$space-xxl;
+
+  @include m.respond(lg) {
+    grid-template-columns: 0.85fr 1.15fr;
+  }
+}
+
+.contact__company {
+  font-size: 1.25rem;
+  margin-bottom: v.$space-sm;
+}
+
+.contact__address {
+  font-style: normal;
+  color: var(--eptt-text-muted-inverse);
+  margin-bottom: v.$space-lg;
+  line-height: 1.6;
+}
+
+.contact__lines {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-sm;
+  margin: 0 0 v.$space-lg;
+
+  dt {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--eptt-gold);
+    margin-bottom: 0.15rem;
+  }
+
+  dd {
+    margin: 0;
+    font-size: 0.98rem;
+
+    a {
+      @include m.focus-ring;
+
+      &:hover {
+        color: var(--eptt-gold);
+      }
+    }
+  }
+}
+
+.contact__map {
+  position: relative;
+  border: 2px solid var(--eptt-gold);
+  border-radius: 1rem;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: v.$space-sm;
+  text-align: center;
+  padding: v.$space-lg;
+  background:
+    linear-gradient(rgba(232, 185, 59, 0.08), rgba(232, 185, 59, 0.08)),
+    repeating-linear-gradient(0deg, transparent 0 38px, rgba(201, 201, 201, 0.08) 38px 39px),
+    repeating-linear-gradient(90deg, transparent 0 38px, rgba(201, 201, 201, 0.08) 38px 39px),
+    var(--eptt-charcoal);
+}
+
+.contact__map-pin {
+  width: 2rem;
+  height: 2rem;
+  color: var(--eptt-gold);
+}
+
+.contact__map-label {
+  font-size: 0.85rem;
+  color: var(--eptt-text-muted-inverse);
+  max-width: 26ch;
+}
+
+.contact__form-wrap {
+  background: var(--eptt-charcoal);
+  border: 1px solid rgba(232, 185, 59, 0.2);
+  border-radius: 1.25rem;
+  padding: v.$space-lg;
+
+  @include m.respond(md) {
+    padding: v.$space-xl;
+  }
+}
+
+.contact__form {
+  display: grid;
+  gap: v.$space-md;
+
+  @include m.respond(sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  &--full {
+    @include m.respond(sm) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--eptt-text-muted-inverse);
+  }
+
+  input,
+  select,
+  textarea {
+    background: var(--eptt-black);
+    border: 1px solid var(--eptt-border);
+    border-radius: 0.5rem;
+    padding: 0.7rem 0.85rem;
+    color: var(--eptt-white);
+    font-family: v.$font-body;
+    font-size: 0.95rem;
+    transition: border-color var(--eptt-duration-sm) var(--eptt-ease-out);
+    @include m.focus-ring;
+
+    &:hover {
+      border-color: var(--eptt-gold-dk);
+    }
+
+    &.invalid {
+      border-color: #e0645a;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+}
+
+.contact__error {
+  font-size: 0.78rem;
+  color: #e0645a;
+}
+
+.contact__submit {
+  @include m.button-gold-filled;
+  margin-top: v.$space-xs;
+  width: 100%;
+}
+
+.contact__success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: v.$space-sm;
+  padding: v.$space-xl v.$space-md;
+
+  h3 {
+    color: var(--eptt-white);
+    font-size: 1.3rem;
+  }
+
+  p {
+    color: var(--eptt-text-muted-inverse);
+    max-width: 32ch;
+  }
+}
+
+.contact__success-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  color: var(--eptt-gold);
+}
+
+.contact__another {
+  @include m.button-gold-outline;
+  margin-top: v.$space-sm;
+}
+
+.contact__legal {
+  margin-top: v.$space-xxl;
+  padding-top: v.$space-lg;
+  border-top: 1px solid rgba(232, 185, 59, 0.2);
+  text-align: center;
+
+  p {
+    font-size: 0.82rem;
+    color: var(--eptt-text-muted-inverse);
+  }
+}

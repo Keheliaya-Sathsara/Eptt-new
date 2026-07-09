@@ -1,0 +1,123 @@
+<footer id="contact" class="contact" aria-labelledby="contact-heading">
+  <div class="contact__inner container">
+    <app-section-header
+      kicker="Get In Touch"
+      title="Reserve Your Chauffeur"
+    ></app-section-header>
+
+    <div class="contact__grid">
+      <div class="contact__info" id="contact-heading">
+        <h3 class="contact__company">Executive Premium Transport &amp; Travels (Pvt) Ltd</h3>
+        <address class="contact__address">
+          6th Floor, Marino Mall Tower,<br />
+          No. 590 Galle Road, Colombo 03
+        </address>
+
+        <dl class="contact__lines">
+          <div>
+            <dt>Direct</dt>
+            <dd><a href="tel:+94117555450">+94 11 7555450</a> / <a href="tel:+94117555448">+94 11 7555448</a></dd>
+          </div>
+          <div>
+            <dt>Hotline</dt>
+            <dd><a href="tel:+94760964101">+94 76 096 4101</a> / <a href="tel:+94765565504">+94 76 556 5504</a></dd>
+          </div>
+          <div>
+            <dt>Email</dt>
+            <dd><a href="mailto:info@eptt.lk">info&#64;eptt.lk</a></dd>
+          </div>
+        </dl>
+
+        <!-- Placeholder map. Swap for a real embed, e.g. a Google Maps
+             iframe pointed at Marino Mall Tower, Galle Road, Colombo 03. -->
+        <div class="contact__map" role="img" aria-label="Map location of EPTT office at Marino Mall Tower, Colombo 03">
+          <span class="contact__map-pin" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+          </span>
+          <span class="contact__map-label">Marino Mall Tower, Galle Road, Colombo 03</span>
+        </div>
+      </div>
+
+      <div
+        class="contact__form-wrap"
+        appearOnScroll
+        (appear)="formVisible.set(true)"
+        [@fadeSlideUp]="{ value: formVisible() ? 'in' : 'out', params: params }"
+      >
+        <div class="contact__success" *ngIf="submitted()" aria-live="polite" role="status">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="contact__success-icon" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <path d="m8 12.5 2.5 2.5L16 9.5" />
+          </svg>
+          <h3>Enquiry received</h3>
+          <p>Thank you — a member of our team will confirm your booking shortly.</p>
+          <button type="button" class="contact__another" (click)="bookAnother()">Send another enquiry</button>
+        </div>
+
+        <form
+          *ngIf="!submitted()"
+          class="contact__form"
+          [formGroup]="form"
+          (ngSubmit)="onSubmit()"
+          novalidate
+        >
+          <div class="contact__field">
+            <label for="name">Full name</label>
+            <input id="name" type="text" formControlName="name" [class.invalid]="isInvalid('name')" />
+            <p class="contact__error" *ngIf="isInvalid('name')">Please enter your name.</p>
+          </div>
+
+          <div class="contact__field">
+            <label for="email">Email</label>
+            <input id="email" type="email" formControlName="email" [class.invalid]="isInvalid('email')" />
+            <p class="contact__error" *ngIf="isInvalid('email')">Please enter a valid email address.</p>
+          </div>
+
+          <div class="contact__field">
+            <label for="phone">Phone</label>
+            <input id="phone" type="tel" formControlName="phone" [class.invalid]="isInvalid('phone')" />
+            <p class="contact__error" *ngIf="isInvalid('phone')">Please enter a valid phone number.</p>
+          </div>
+
+          <div class="contact__field">
+            <label for="vehicleClass">Vehicle class</label>
+            <select id="vehicleClass" formControlName="vehicleClass" [class.invalid]="isInvalid('vehicleClass')">
+              <option value="" disabled selected>Select a vehicle</option>
+              <option *ngFor="let vehicle of vehicleClasses" [value]="vehicle">{{ vehicle }}</option>
+            </select>
+            <p class="contact__error" *ngIf="isInvalid('vehicleClass')">Please select a vehicle class.</p>
+          </div>
+
+          <div class="contact__field">
+            <label for="pickup">Pickup location</label>
+            <input id="pickup" type="text" formControlName="pickup" [class.invalid]="isInvalid('pickup')" />
+            <p class="contact__error" *ngIf="isInvalid('pickup')">Please enter a pickup location.</p>
+          </div>
+
+          <div class="contact__field">
+            <label for="dropoff">Drop-off location</label>
+            <input id="dropoff" type="text" formControlName="dropoff" [class.invalid]="isInvalid('dropoff')" />
+            <p class="contact__error" *ngIf="isInvalid('dropoff')">Please enter a drop-off location.</p>
+          </div>
+
+          <div class="contact__field">
+            <label for="datetime">Date &amp; time</label>
+            <input id="datetime" type="datetime-local" formControlName="datetime" [class.invalid]="isInvalid('datetime')" />
+            <p class="contact__error" *ngIf="isInvalid('datetime')">Please choose a date and time.</p>
+          </div>
+
+          <div class="contact__field contact__field--full">
+            <label for="message">Message (optional)</label>
+            <textarea id="message" rows="3" formControlName="message"></textarea>
+          </div>
+
+          <button type="submit" class="contact__submit contact__field--full">Send Enquiry</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="contact__legal">
+      <p>&copy; {{ currentYear }} Executive Premium Transport &amp; Travels (Pvt) Ltd. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

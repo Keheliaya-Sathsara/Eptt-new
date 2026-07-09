@@ -1,0 +1,21 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.fleet {
+  background: var(--eptt-grey-lt);
+  padding-block: v.$space-xxl;
+}
+
+.fleet__grid {
+  display: grid;
+  gap: v.$space-lg;
+  grid-template-columns: 1fr;
+
+  @include m.respond(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.respond(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

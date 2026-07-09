@@ -1,0 +1,65 @@
+<section id="transfers-tours" class="transfers" aria-labelledby="transfers-heading">
+  <div class="transfers__inner container">
+    <app-section-header
+      kicker="Getting You There"
+      title="Airport Transfers &amp; Chauffeur-Guided Tours"
+    ></app-section-header>
+
+    <div
+      class="transfers__promise"
+      appearOnScroll
+      (appear)="visible.set(true)"
+      [@fadeSlideUp]="{ value: visible() ? 'in' : 'out', params: params }"
+    >
+      <div class="transfers__promise-item">
+        <h3 id="transfers-heading">Zero Terminal Delays</h3>
+        <p>
+          The vehicle departs a minimum of two hours early for every pickup, and the
+          chauffeur waits until the flight lands — no delays, no uncertainty.
+        </p>
+      </div>
+      <div class="transfers__promise-item">
+        <h3>Expressway Both Ways</h3>
+        <p>
+          We take the expressway in both directions, even when the vehicle is running
+          empty, cutting traffic and travel time for every journey.
+        </p>
+      </div>
+    </div>
+
+    <div class="transfers__tours">
+      <div class="transfers__tabs" role="tablist" aria-label="Tour itineraries">
+        <button
+          *ngFor="let tour of tours"
+          type="button"
+          role="tab"
+          class="transfers__tab"
+          [class.transfers__tab--active]="activeTour().key === tour.key"
+          [attr.aria-selected]="activeTour().key === tour.key"
+          (click)="selectTour(tour)"
+        >
+          {{ tour.label }}
+        </button>
+      </div>
+
+      <div class="transfers__panel" role="tabpanel">
+        <div class="transfers__panel-image">
+          <img
+            [src]="activeTour().image"
+            [alt]="activeTour().label + ' with EPTT'"
+            width="700"
+            height="500"
+            loading="lazy"
+          />
+        </div>
+        <p class="transfers__panel-desc">{{ activeTour().description }}</p>
+      </div>
+
+      <p class="transfers__tagline">
+        <strong>It's client's tour, client's choice.</strong>
+        Pickup from anywhere in Sri Lanka, no fixed duration, fully private — never
+        grouped with other tourists.
+      </p>
+    </div>
+  </div>
+</section>

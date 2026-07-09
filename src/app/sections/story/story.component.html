@@ -1,0 +1,59 @@
+<section id="story" class="story" aria-labelledby="story-heading">
+  <div class="story__rail" aria-hidden="true"></div>
+
+  <div class="story__inner container">
+    <app-section-header kicker="Who We Are" title="The Executive Story"></app-section-header>
+
+    <div class="story__grid">
+      <div
+        class="story__copy"
+        appearOnScroll
+        (appear)="copyVisible.set(true)"
+        [@fadeSlideUp]="{ value: copyVisible() ? 'in' : 'out', params: copyParams }"
+      >
+        <p id="story-heading">
+          Executive Premium Transport and Travels (EPTT) is one of the finest luxury
+          chauffeur-driven companies based in Colombo, Sri Lanka. It was founded with the
+          vision of redefining luxury travel through service excellence, authenticity and
+          friendly customer care.
+        </p>
+        <p>
+          Started with catering to a handful of exclusive premium clienteles, we have shown
+          rapid growth in the industry to become a trendsetter and a name synonymous with
+          professionalism, refinement and luxury.
+        </p>
+        <p>
+          We are equipped with an exclusive range of luxury vehicles and staffed with a
+          passionate team, constantly striving to ensure the highest quality in luxury
+          travel.
+        </p>
+      </div>
+
+      <div
+        class="story__images"
+        appearOnScroll
+        (appear)="imageVisible.set(true)"
+        [@fadeSlideUp]="{ value: imageVisible() ? 'in' : 'out', params: imageParams }"
+      >
+        <div class="story__image-frame">
+          <img
+            src="assets/images/story-mercedes-1.svg"
+            alt="Mercedes-Benz S-Class in the EPTT fleet"
+            width="900"
+            height="700"
+            loading="lazy"
+          />
+        </div>
+        <div class="story__image-frame story__image-frame--secondary">
+          <img
+            src="assets/images/story-mercedes-2.svg"
+            alt="Mercedes-Benz E-Class in the EPTT fleet"
+            width="900"
+            height="700"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
