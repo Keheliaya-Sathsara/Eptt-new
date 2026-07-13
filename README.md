@@ -46,29 +46,22 @@ src/
     app.config.ts                     # provideRouter + provideAnimations
 ```
 
-## Swapping in real brochure assets
+## Image assets
 
-All imagery under `src/assets/images/` is a generated placeholder (SVG, brand-toned, labeled) so the layout can be reviewed before real photography and client logos are ready. Regenerate them at any time with:
+`src/assets/images/` holds the real brochure photography and client logos (PNG). Current dimensions and where each is used:
 
-```bash
-node scripts/gen-placeholders.js
-```
-
-To go live, replace each file **in place** with a real asset of the same name (JPG/PNG/WebP is fine — just update the `src` extension in the relevant template if it changes):
-
-| File | Used in | Real asset needed |
+| File(s) | Used in | Dimensions |
 |---|---|---|
-| `hero-chauffeur.svg` | Hero | Chauffeur beside a Mercedes, portrait orientation |
-| `story-mercedes-1.svg`, `story-mercedes-2.svg` | Our Story | Two fleet vehicle photos |
-| `fleet-*.svg` (6 files) | Fleet | One photo per vehicle: S-Class Coupé, C-Class, E-Class, V-Class, Corolla Axio, HiAce |
-| `transfers-airport.svg`, `tour-*.svg` (4 files) | Airport Transfers & Tours | Airport transfer + one image per tour category |
-| `client-*.svg` (10 files) | Our Clientele | Client logos, ideally transparent PNG/SVG |
+| `hero-chauffeur.png` | Hero | 720×720 |
+| `story-mercedes-1.png`, `story-mercedes-2.png` | Our Story | 720×720 |
+| `fleet-*.png` (6 files) | Fleet | 1080×720 |
+| `tour-*.png` (4 files) | Airport Transfers & Tours | 1080×720 |
+| `client-*.png` (10 files) | Our Clientele | 2000×2000 |
 
-Also update:
-- `src/favicon.ico` — replace with the real EPTT mark (gold disc on black), see the `TODO` comment in `src/index.html`.
-- `og:image` in `src/index.html` once a real hero image exists.
+If you replace any of these with a different asset, keep the aspect ratio close to the table above (or update the matching `width`/`height` attributes and CSS `aspect-ratio` in that section's component to avoid layout shift / awkward cropping — see `hero.component.scss`, `story.component.scss`, `fleet-card.component.scss`, `transfers-tours.component.scss`).
 
-Once real assets are in place, `scripts/gen-placeholders.js` is no longer needed and can be deleted.
+Still outstanding:
+- `src/favicon.ico` — still the stock Angular CLI icon. Replace with the real EPTT mark (gold disc on black), see the `TODO` comment in `src/index.html`.
 
 ## Notes on the build
 

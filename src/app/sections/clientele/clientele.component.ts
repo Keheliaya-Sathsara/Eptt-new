@@ -24,15 +24,15 @@ export class ClienteleComponent {
   readonly introParams = motionParams('600ms');
 
   readonly clients: Client[] = [
-    { name: 'Central Bank of Sri Lanka', logo: 'assets/images/client-central-bank-of-sri-lanka.svg' },
-    { name: 'Galle Face Hotel', logo: 'assets/images/client-galle-face-hotel.svg' },
-    { name: 'Taj Samudra Colombo', logo: 'assets/images/client-taj-samudra-colombo.svg' },
-    { name: 'Oman Air', logo: 'assets/images/client-oman-air.svg' },
-    { name: 'LOT Polish Airlines', logo: 'assets/images/client-lot-polish-airlines.svg' },
-    { name: 'Caltex', logo: 'assets/images/client-caltex.svg' },
-    { name: 'Chevron', logo: 'assets/images/client-chevron.svg' },
-    { name: "Bally's Casino", logo: 'assets/images/client-bally-s-casino.svg' },
-    { name: 'Bellagio Casino', logo: 'assets/images/client-bellagio-casino.svg' },
-    { name: 'Casino Marina', logo: 'assets/images/client-casino-marina.svg' },
+    { name: 'Central Bank of Sri Lanka', logo: 'assets/images/client-central-bank-of-sri-lanka.png' },
+    { name: 'Galle Face Hotel', logo: 'assets/images/client-galle-face-hotel.png' },
+    { name: 'Taj Samudra Colombo', logo: 'assets/images/client-taj-samudra-colombo.png' },
+    { name: 'Oman Air', logo: 'assets/images/client-oman-air.png' },
+    { name: 'LOT Polish Airlines', logo: 'assets/images/client-lot-polish-airlines.png' },
+    { name: 'Caltex', logo: 'assets/images/client-caltex.png' },
+    { name: 'Chevron', logo: 'assets/images/client-chevron.png' },
+    { name: "Bally's Casino", logo: 'assets/images/client-bally-s-casino.png' },
+    { name: 'Bellagio Casino', logo: 'assets/images/client-bellagio-casino.png' },
+    { name: 'Casino Marina', logo: 'assets/images/client-casino-marina.png' },
   ];
 }

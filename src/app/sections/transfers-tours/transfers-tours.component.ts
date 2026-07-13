@@ -30,28 +30,28 @@ export class TransfersToursComponent {
       label: 'In and Around Colombo',
       description:
         'Business meetings, city errands and everyday travel across Colombo in an unhurried, private vehicle.',
-      image: 'assets/images/tour-colombo.svg',
+      image: 'assets/images/tour-colombo.png',
     },
     {
       key: 'city',
       label: 'City Tours',
       description:
         'A curated sweep of Colombo’s landmarks, shopping and dining, paced entirely to the client’s schedule.',
-      image: 'assets/images/tour-city.svg',
+      image: 'assets/images/tour-city.png',
     },
     {
       key: 'heritage',
       label: 'Cultural & Heritage Tours',
       description:
         'Sri Lanka’s ancient cities, temples and heritage sites, with a chauffeur who knows the routes and the history.',
-      image: 'assets/images/tour-heritage.svg',
+      image: 'assets/images/tour-heritage.png',
     },
     {
       key: 'outstation',
       label: 'Outstation Tours',
       description:
         'Multi-day journeys across the island — hill country, coastlines and beyond — with pickup from anywhere in Sri Lanka.',
-      image: 'assets/images/tour-outstation.svg',
+      image: 'assets/images/tour-outstation.png',
     },
   ];
 

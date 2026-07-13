@@ -4,15 +4,15 @@
   appearOnScroll
   (appear)="onAppear()"
 >
-  <span
-    class="section-header__circle"
-    [@circlePop]="{ value: visible ? 'in' : 'out', params: circleParams }"
-    aria-hidden="true"
-  ></span>
   <div
     class="section-header__pill"
     [@pillReveal]="{ value: visible ? 'in' : 'out', params: pillParams }"
   >
+    <span
+      class="section-header__circle"
+      [@circlePop]="{ value: visible ? 'in' : 'out', params: circleParams }"
+      aria-hidden="true"
+    ></span>
     <div class="section-header__text">
       <span class="section-header__kicker" *ngIf="kicker">{{ kicker }}</span>
       <h2 class="section-header__title">{{ title }}</h2>

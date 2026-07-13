@@ -22,11 +22,11 @@ export class FleetComponent {
   readonly visible = signal(false);
 
   readonly vehicles: Vehicle[] = [
-    { name: 'Mercedes S-Class Coupé', image: 'assets/images/fleet-s-class.svg' },
-    { name: 'Mercedes C-Class', image: 'assets/images/fleet-c-class.svg' },
-    { name: 'Mercedes E-Class', image: 'assets/images/fleet-e-class.svg' },
-    { name: 'Mercedes V-Class', image: 'assets/images/fleet-v-class.svg' },
-    { name: 'Toyota Corolla Axio', image: 'assets/images/fleet-corolla-axio.svg' },
-    { name: 'Toyota HiAce', image: 'assets/images/fleet-hiace.svg' },
+    { name: 'Mercedes S-Class Coupé', image: 'assets/images/fleet-s-class.png' },
+    { name: 'Mercedes C-Class', image: 'assets/images/fleet-c-class.png' },
+    { name: 'Mercedes E-Class', image: 'assets/images/fleet-e-class.png' },
+    { name: 'Mercedes V-Class', image: 'assets/images/fleet-v-class.png' },
+    { name: 'Toyota Corolla Axio', image: 'assets/images/fleet-corolla-axio.png' },
+    { name: 'Toyota HiAce', image: 'assets/images/fleet-hiace.png' },
   ];
 }
